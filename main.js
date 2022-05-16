@@ -2,6 +2,7 @@ song_1 = "";
 song_2 = "";
 
 scoreLeftWrist = 0;
+scoreRightWrist = 0;
 
 status_1 = "";
 
@@ -10,6 +11,9 @@ leftWristY = 0;
 
 rightWristX = 0;
 rightWristY = 0;
+
+song_peter_pan = "";
+song_harry_potter = "";
 
 function preload()
 {
@@ -42,6 +46,9 @@ function gotposes(results)
 
     scoreLeftWrist = results[0].pose.keypoints[9].score;
     console.log(scoreLeftWrist);
+
+    scoreRightWrist = results[0].pose.keypoints[9].score;
+    console.log(scoreRightWrist);
     
     leftWristX = results[0].pose.leftWrist.x;
     leftWristY = results[0].pose.leftWrist.y;
@@ -59,7 +66,7 @@ function draw()
   fill("#F72F28");
   stroke("#F72F28")
 
-  song_peter_pan = song_1.isplaying();
+  song_peter_pan = song_1.isPlaying();
 
   if(scoreLeftWrist > 0.2)
   {
@@ -71,4 +78,11 @@ function draw()
       document.getElementById("song_name").innerHTML = "Song Name - Peter Pan";
     }
   }
+}
+
+function play()
+{
+    song.play();
+    song.setVolume(1);
+    song.rate(1);
 }
